@@ -14,8 +14,9 @@ Consequential choices were emitted using `emit_decision_signal`:
 2. Authenticated provider reconciliation and terminal-state protection — proposal **#172**.
 3. Durable customer exclusions before replaying recovery receipts — proposal **#173**.
 4. Public demos use the production bundle; development file/HMR middleware remains local — proposal **#174**.
+5. A live transport slot is released only after provider terminal confirmation — a final proposal emitted with the call-slot regression test.
 
-All four returned **“Sent for human review”**, explicitly stating they become decisions only after approval. A queued proposal is not an active decision ID and was not treated as recalled guidance. An initial third signal with an unsupported decision category was rejected; it was corrected to `architecture`.
+All five returned **“Sent for human review”**, explicitly stating they become decisions only after approval. A queued proposal is not an active decision ID and was not treated as recalled guidance. An initial third signal with an unsupported decision category was rejected; it was corrected to `architecture`.
 
 Later in this build, the first two proposals appeared as approved, active decisions. `get_context_for_file` on `server/policy.ts` returned [DEC-2026-0002](https://record.dlogs.app/decisions/DEC-2026-0002), “Keep recovery truth in durable tools and reserve paid voice for explicit tests.” A task-context query for final settlement verification and provider configuration hardening returned both that decision and [DEC-2026-0001](https://record.dlogs.app/decisions/DEC-2026-0001), “Reconcile voice callbacks through authenticated reads; preserve attempt reservations,” with file-scope and semantic matches.
 

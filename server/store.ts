@@ -100,7 +100,11 @@ export class Store {
     if (customer.paymentStatus === 'paid')
       throw new AppError(409, 'ALREADY_PAID', 'This payment is already confirmed.');
     const open = this.allSessions().find(
-      (s) => !s.endedAt && (s.customerId === customerId || (mode === 'live' && s.mode === 'live')),
+      (s) =>
+        (!s.endedAt && s.customerId === customerId) ||
+        (mode === 'live' &&
+          s.mode === 'live' &&
+          this.meta(`execution_terminal:${s.id}`) !== 'true'),
     );
     if (open)
       throw new AppError(

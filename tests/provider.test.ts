@@ -10,6 +10,7 @@ import {
   verificationFingerprint,
 } from '../server/bolna.ts';
 import { agentConfiguration } from '../server/agent.ts';
+import { performAction } from '../server/policy.ts';
 
 function fixture(t: { after: (fn: () => void) => void }) {
   const s = new Store(':memory:');
@@ -156,9 +157,11 @@ test('live budget prevents a fifth attempt and forbids unconfirmed calls', async
   await assert.rejects(() => startLiveCall(store, 'C001', false), is('PERMISSION_REQUIRED'));
   for (const customerId of ['C001', 'C002', 'C003', 'C005']) {
     const s = await startLiveCall(store, customerId, true);
-    s.endedAt = new Date().toISOString();
-    s.status = 'completed';
-    store.saveSession(s);
+    applyExecution(store, s.id, {
+      id: s.executionId,
+      agent_id: config.agentId,
+      status: 'completed',
+    });
   }
   assert.equal(settings(store).remainingUsd, 0);
   await assert.rejects(() => startLiveCall(store, 'C006', true), is('LIVE_NOT_READY'));
@@ -175,4 +178,16 @@ test('secret rotation invalidates cached verification before another call', (t) 
   config.toolSecret = 'rotated-test-only-secret';
   assert.equal(settings(store).providerVerified, false);
   assert.equal(settings(store).liveReady, false);
+});
+test('ending recovery permission does not free an ongoing provider call slot', (t) => {
+  const store = fixture(t);
+  ready(store);
+  const s = store.createSession('C001', 'live', 0.5);
+  s.executionId = 'test-execution';
+  store.saveSession(s);
+  performAction(store, s.id, { name: 'record_opt_out', evidence: 'Please stop contacting me.' });
+  assert(store.session(s.id).endedAt);
+  assert.throws(() => store.createSession('C002', 'live', 0.5), is('CALL_IN_PROGRESS'));
+  applyExecution(store, s.id, { id: s.executionId, agent_id: config.agentId, status: 'completed' });
+  assert.equal(store.createSession('C002', 'live', 0.5).customerId, 'C002');
 });

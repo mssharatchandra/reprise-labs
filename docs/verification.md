@@ -2,17 +2,17 @@
 
 Observed on 2026-10-04 with Node 26 on macOS:
 
-| Check                            | Observation                                                                                                                                |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Strict TypeScript and Vite build | Passed                                                                                                                                     |
-| Backend tests                    | 27 passed: policies, API auth, provider binding, callback ordering, budget behavior and secret-rotation invalidation                       |
-| Scripted scenarios               | 10/10 passed; zero provider calls; artifact includes accepted events                                                                       |
-| Browser flows                    | 4 passed: end-to-end simulated checkout, durable opt-out, search/export/setup, mobile layout                                               |
-| Provider agent verification      | Six authenticated tool URLs, configured model and 90-second cap verified                                                                   |
-| Public endpoint                  | Health reachable; unauthenticated operator API returns 401                                                                                 |
-| First permitted live attempt     | Provider returned busy; no conversation, no tool actions, duration 0, provider-native cost 0                                               |
-| Second permitted live attempt    | Answered; completed, 77 seconds; explicit consent and simulated payment-link tool accepted; provider-native cost 9 (currency not inferred) |
-| Live-created checkout            | Confirmed through the browser after the call; only then did the fictional invoice become recovered                                         |
+| Check                            | Observation                                                                                                                                         |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Strict TypeScript and Vite build | Passed                                                                                                                                              |
+| Backend tests                    | 28 passed: policies, API auth, provider binding, callback ordering, budget behavior, secret-rotation invalidation and provider call-slot protection |
+| Scripted scenarios               | 10/10 passed; zero provider calls; artifact includes accepted events                                                                                |
+| Browser flows                    | 4 passed: end-to-end simulated checkout, durable opt-out, search/export/setup, mobile layout                                                        |
+| Provider agent verification      | Six authenticated tool URLs, configured model and 90-second cap verified                                                                            |
+| Public endpoint                  | Health reachable; unauthenticated operator API returns 401                                                                                          |
+| First permitted live attempt     | Provider returned busy; no conversation, no tool actions, duration 0, provider-native cost 0                                                        |
+| Second permitted live attempt    | Answered; completed, 77 seconds; explicit consent and simulated payment-link tool accepted; provider-native cost 9 (currency not inferred)          |
+| Live-created checkout            | Confirmed through the browser after the call; only then did the fictional invoice become recovered                                                  |
 
 The first attempt is transport evidence only. The second is an actual answered conversation, with server receipts for permission and link creation. The agent explicitly stated no SMS/email was sent and autopay was unchanged. The browser then confirmed the simulated checkout. [Live evidence](../artifacts/live-evidence.json) records these observations with the private destination, credentials and checkout capability omitted. Total retained attempt reservation: $1.00; this is not a claim of $1.00 actual provider billing.
 

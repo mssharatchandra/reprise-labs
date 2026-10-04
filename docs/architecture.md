@@ -22,7 +22,7 @@ Every provider tool uses a secret shared only by the server/provider and a rando
 
 A payment link remains pending until the separate simulated checkout adapter confirms it. Checkout is idempotent. A voluntary settlement after opt-out preserves the opt-out; review blocks unsettled checkout. There is no inference from an LLM summary or claimed prior payment to financial state.
 
-The voice request reserves budget before contacting the provider. An unknown request outcome stays in reconciliation and retains its reservation; the app refuses a second simultaneous live call. Accepted execution IDs are reconciled using authenticated provider reads. Callback payloads cannot directly mutate payment state. Agent/execution binding rejects mismatches, and terminal state does not regress when notifications arrive out of order.
+The voice request reserves budget before contacting the provider. An unknown request outcome stays in reconciliation and retains its reservation; the app refuses a second simultaneous live call until the provider confirms terminal transport state, even if permission/refusal already ended local recovery. Accepted execution IDs are reconciled using authenticated provider reads. Callback payloads cannot directly mutate payment state. Agent/execution binding rejects mismatches, and terminal state does not regress when notifications arrive out of order.
 
 The loopback workspace trusts the local machine. Public hosts require an operator bearer token; local-origin checks prevent a cross-origin browser from using local operator privileges. Separate provider authorization, rate limiting, body-size limits, redacted free text, and restricted destinations reduce accidental exposure. This is not tenant isolation or enterprise authentication.
 

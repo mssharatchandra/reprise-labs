@@ -63,7 +63,7 @@ The public tunnel shows a locked operator workspace. Use the private `OPERATOR_T
 ## Verify
 
 ```sh
-npm test                         # 27 policy / API / provider boundary tests
+npm test                         # 28 policy / API / provider boundary tests
 npm run eval                     # ten scripted scenarios, zero provider calls
 npx playwright install chromium  # once, for browser tests
 npm run test:e2e                  # four browser workflows; independent DB, live calling disabled
