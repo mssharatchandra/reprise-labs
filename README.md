@@ -2,6 +2,12 @@
 
 **A missed payment. A considered next step.**
 
+**[Open Reprise](https://meal-angle-noticed-temporary.trycloudflare.com/) · [Try the recovery desk](https://meal-angle-noticed-temporary.trycloudflare.com/demo)**
+
+No login or API keys needed. Explore ten fictional customers, scripted conversations, and simulated checkout. The landing page also includes the original call audio and dashboard recording.
+
+The current online demo uses a temporary tunnel and stays available while the local server and tunnel are running. If it is offline, the [call audio](artifacts/live-call.mp3), [dashboard recording](artifacts/live-dashboard.webm), and local setup instructions below remain available.
+
 A side project exploring voice agents, failed subscription payments, and the boundary between a helpful conversation and an authorized action. Reprise gives a merchant a recovery workspace, a Bolna voice agent named Mira, ten fictional customer records, and a small set of server-enforced tools.
 
 ![Reprise landing page](docs/screenshots/landing.png)
