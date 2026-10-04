@@ -6,6 +6,8 @@ import { config } from '../server/env.ts';
 import { request as httpRequest } from 'node:http';
 
 test('HTTP boundary authenticates operators and scopes provider tools to live capabilities', async (t) => {
+  // Explicit fictional credentials make this export check meaningful without a local environment.
+  config.apiKey = 'test-only-export-credential';
   const store = new Store(':memory:'),
     server = createApp(store).listen(0, '127.0.0.1');
   await new Promise<void>((r) => server.once('listening', r));
