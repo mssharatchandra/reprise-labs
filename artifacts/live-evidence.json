@@ -1,0 +1,107 @@
+{
+  "product": "Reprise Labs",
+  "capturedAt": "2026-10-04T18:08:25.927Z",
+  "source": "Authenticated Bolna execution reads plus the local tool and simulated checkout ledger.",
+  "destination": "One privately configured number controlled by the test participant; omitted.",
+  "financialMode": "simulated",
+  "transcriptTiming": "Utterance order comes from provider transcript. Original per-utterance timestamps are unavailable; timestamps in the app reflect ingestion, not speech timing.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "fictionalCustomerId": "C001",
+      "executionFingerprint": "a859fe2c492613da41a5fc360faaa6d8216f1d1dcd98d46c1eaa20092bc45746",
+      "startedAt": "2026-10-04T17:59:40.779Z",
+      "finalizedAt": "2026-10-04T18:00:12.372Z",
+      "providerStatus": "busy",
+      "conversationDurationSeconds": 0,
+      "providerCostNative": 0,
+      "costCurrency": "Not inferred from the provider response.",
+      "reservedUsd": 0.5,
+      "consentRecorded": false,
+      "transcript": [],
+      "acceptedActions": []
+    },
+    {
+      "attempt": 2,
+      "fictionalCustomerId": "C001",
+      "executionFingerprint": "b1a3017a3a0064ff45f3d7bcb24d8b12e756be3649d8a9cfe6aa2b2ecf304dc0",
+      "startedAt": "2026-10-04T18:04:08.039Z",
+      "finalizedAt": "2026-10-04T18:05:44.184Z",
+      "providerStatus": "completed",
+      "conversationDurationSeconds": 77,
+      "providerCostNative": 9,
+      "costCurrency": "Not inferred from the provider response.",
+      "reservedUsd": 0.5,
+      "consentRecorded": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, an AI assistant for the Northstar Fitness demo. This call uses a fictional subscription payment. Is now a good time to discuss it?"
+        },
+        {
+          "role": "customer",
+          "text": "yes"
+        },
+        {
+          "role": "agent",
+          "text": "One moment while I check that."
+        },
+        {
+          "role": "agent",
+          "text": "Thank you for confirming. The payment attempt for your Northstar Fitness subscription of 1499 rupees was declined due to insufficient funds. How can I assist you with this?"
+        },
+        {
+          "role": "customer",
+          "text": "please create a payment link"
+        },
+        {
+          "role": "agent",
+          "text": "One moment while I check that."
+        },
+        {
+          "role": "agent",
+          "text": "A simulated checkout link for a one-off payment is now available in the demo workspace. Please note, no SMS or email has been sent, and this does not restore autopay or change your payment mandate. Is there anything else you would like to know about this invoice?"
+        },
+        {
+          "role": "customer",
+          "text": "no"
+        },
+        {
+          "role": "agent",
+          "text": "Great! So, the next step is the one- off payment link available in the demo workspace. If you need anything else later, feel free to reach out. Goodbye!"
+        }
+      ],
+      "acceptedActions": [
+        {
+          "type": "consent_recorded",
+          "at": "2026-10-04T18:04:26.960Z",
+          "detail": "yes"
+        },
+        {
+          "type": "payment_link_created",
+          "at": "2026-10-04T18:04:48.292Z",
+          "detail": "Simulated one-off checkout. Payment remains outstanding; no message was sent."
+        }
+      ]
+    }
+  ],
+  "checkoutResults": [
+    {
+      "fictionalCustomerId": "C001",
+      "paymentStatus": "paid",
+      "recoveryStatus": "recovered",
+      "checkoutConfirmation": [
+        {
+          "at": "2026-10-04T18:07:04.454Z",
+          "amountPaise": 149900,
+          "financialMode": "simulated"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "One answered happy-path call is not a voice-quality benchmark.",
+    "Checkout, message delivery and merchant actions are simulated or requests only.",
+    "No provider dollar cost inferred; conservative attempt reservations remain in the ledger."
+  ]
+}

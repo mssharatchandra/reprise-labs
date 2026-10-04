@@ -1,0 +1,879 @@
+{
+  "product": "Reprise Labs",
+  "evaluatedAt": "2026-10-04T17:58:20.869Z",
+  "method": "Deterministic policy rehearsal. Not an LLM quality or live telephony evaluation.",
+  "passed": 10,
+  "total": 10,
+  "providerSpendUsd": 0,
+  "results": [
+    {
+      "customerId": "C001",
+      "scenario": "pay_now",
+      "expected": "recovered",
+      "actual": "recovered",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.855Z"
+        },
+        {
+          "role": "customer",
+          "text": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.855Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The gateway reported insufficient funds for your ₹1,499 monthly invoice. Would a simulated one-off payment link help, or would you prefer a callback or a person to review it?",
+          "at": "2026-10-04T17:58:20.864Z"
+        },
+        {
+          "role": "customer",
+          "text": "Please create a payment link.",
+          "at": "2026-10-04T17:58:20.864Z"
+        },
+        {
+          "role": "agent",
+          "text": "Simulated link is available in the merchant workspace. No SMS was sent. Invoice is still outstanding; autopay is unchanged.",
+          "at": "2026-10-04T17:58:20.864Z"
+        },
+        {
+          "role": "customer",
+          "text": "That’s all, thank you. Goodbye.",
+          "at": "2026-10-04T17:58:20.864Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The actual next step is recorded in the workspace. Goodbye.",
+          "at": "2026-10-04T17:58:20.864Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "2011a917-007d-4a73-bdad-3403b09cbf68",
+          "customerId": "C001",
+          "sessionId": null,
+          "type": "payment_confirmed",
+          "title": "Simulated payment confirmed",
+          "detail": "Checkout confirmation settled this fictional invoice. The recurring mandate was not changed.",
+          "at": "2026-10-04T17:58:20.864Z",
+          "mode": "checkout",
+          "data": {
+            "amount": 149900,
+            "receiptId": "SIM-F77F60A2"
+          }
+        },
+        {
+          "id": "ac7834d9-91a7-4093-89b5-7a91eec5ca9e",
+          "customerId": "C001",
+          "sessionId": "79c5c2c1-990f-4d33-ab8b-1e41aed5b3c8",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "link_sent",
+          "at": "2026-10-04T17:58:20.864Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "8bdff369-5feb-4121-8663-31c7cb9365e2",
+          "customerId": "C001",
+          "sessionId": "79c5c2c1-990f-4d33-ab8b-1e41aed5b3c8",
+          "type": "payment_link_created",
+          "title": "Payment link created",
+          "detail": "Simulated one-off checkout. Payment remains outstanding; no message was sent.",
+          "at": "2026-10-04T17:58:20.864Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "7f8be319-ff7a-43e2-b946-48cc5f193349",
+          "customerId": "C001",
+          "sessionId": "79c5c2c1-990f-4d33-ab8b-1e41aed5b3c8",
+          "type": "consent_recorded",
+          "title": "Permission granted",
+          "detail": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.856Z",
+          "mode": "rehearsal",
+          "data": {
+            "granted": true
+          }
+        },
+        {
+          "id": "edd37586-e36e-415c-8950-f119d966f8a5",
+          "customerId": "C001",
+          "sessionId": "79c5c2c1-990f-4d33-ab8b-1e41aed5b3c8",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.855Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C002",
+      "scenario": "expired_card",
+      "expected": "link_sent",
+      "actual": "link_sent",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.864Z"
+        },
+        {
+          "role": "customer",
+          "text": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.864Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The gateway reported card expired for your ₹2,999 monthly invoice. Would a simulated one-off payment link help, or would you prefer a callback or a person to review it?",
+          "at": "2026-10-04T17:58:20.865Z"
+        },
+        {
+          "role": "customer",
+          "text": "Please create a payment link.",
+          "at": "2026-10-04T17:58:20.865Z"
+        },
+        {
+          "role": "agent",
+          "text": "Simulated link is available in the merchant workspace. No SMS was sent. Invoice is still outstanding; autopay is unchanged.",
+          "at": "2026-10-04T17:58:20.865Z"
+        },
+        {
+          "role": "customer",
+          "text": "That’s all, thank you. Goodbye.",
+          "at": "2026-10-04T17:58:20.865Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The actual next step is recorded in the workspace. Goodbye.",
+          "at": "2026-10-04T17:58:20.865Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "ed28edee-133d-4837-83b5-c2fdbc48c921",
+          "customerId": "C002",
+          "sessionId": "9c283e2a-7512-4ae2-ab03-edbe5f69820d",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "link_sent",
+          "at": "2026-10-04T17:58:20.865Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "105801b5-4220-4235-b809-3ab51cd0648f",
+          "customerId": "C002",
+          "sessionId": "9c283e2a-7512-4ae2-ab03-edbe5f69820d",
+          "type": "payment_link_created",
+          "title": "Payment link created",
+          "detail": "Simulated one-off checkout. Payment remains outstanding; no message was sent.",
+          "at": "2026-10-04T17:58:20.865Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "98c596d9-6d00-42a4-a9ef-abef3e22badf",
+          "customerId": "C002",
+          "sessionId": "9c283e2a-7512-4ae2-ab03-edbe5f69820d",
+          "type": "consent_recorded",
+          "title": "Permission granted",
+          "detail": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.864Z",
+          "mode": "rehearsal",
+          "data": {
+            "granted": true
+          }
+        },
+        {
+          "id": "9def991f-c2b0-490a-b000-9935ac1304c3",
+          "customerId": "C002",
+          "sessionId": "9c283e2a-7512-4ae2-ab03-edbe5f69820d",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.864Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C003",
+      "scenario": "bank_error",
+      "expected": "callback",
+      "actual": "callback",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.865Z"
+        },
+        {
+          "role": "customer",
+          "text": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.865Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The gateway reported bank unavailable for your ₹999 monthly invoice. Would a simulated one-off payment link help, or would you prefer a callback or a person to review it?",
+          "at": "2026-10-04T17:58:20.865Z"
+        },
+        {
+          "role": "customer",
+          "text": "Can someone call me tomorrow at this time?",
+          "at": "2026-10-04T17:58:20.865Z"
+        },
+        {
+          "role": "agent",
+          "text": "Callback request recorded for merchant follow-up. No automatic call is scheduled.",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "customer",
+          "text": "That’s all, thank you. Goodbye.",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The actual next step is recorded in the workspace. Goodbye.",
+          "at": "2026-10-04T17:58:20.867Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "eb36c6e4-66a4-46df-8656-1adc56a15939",
+          "customerId": "C003",
+          "sessionId": "23be8597-32bc-40cf-a1be-678fc1671617",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "callback",
+          "at": "2026-10-04T17:58:20.867Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "01bd9755-0103-4c43-8427-361cae8973d9",
+          "customerId": "C003",
+          "sessionId": "23be8597-32bc-40cf-a1be-678fc1671617",
+          "type": "callback_requested",
+          "title": "Callback requested",
+          "detail": "Requested for 5/10/2026, 11:28:20 pm IST.",
+          "at": "2026-10-04T17:58:20.867Z",
+          "mode": "rehearsal",
+          "data": {
+            "callbackAt": "2026-10-05T17:58:20.865Z"
+          }
+        },
+        {
+          "id": "94622789-dc03-4ec8-a1ae-c0c229916db0",
+          "customerId": "C003",
+          "sessionId": "23be8597-32bc-40cf-a1be-678fc1671617",
+          "type": "consent_recorded",
+          "title": "Permission granted",
+          "detail": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.865Z",
+          "mode": "rehearsal",
+          "data": {
+            "granted": true
+          }
+        },
+        {
+          "id": "9a4280c5-99a8-479b-944e-391a8d280a6f",
+          "customerId": "C003",
+          "sessionId": "23be8597-32bc-40cf-a1be-678fc1671617",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.865Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C004",
+      "scenario": "mandate_revoked",
+      "expected": "review",
+      "actual": "review",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "customer",
+          "text": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The gateway reported mandate revoked for your ₹1,999 monthly invoice. Your mandate needs merchant review. I cannot recreate it.",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "customer",
+          "text": "I revoked my mandate. I need someone to review it.",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "agent",
+          "text": "Merchant review task created. Automated recovery is paused. No live transfer or cancellation has occurred.",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "customer",
+          "text": "That’s all, thank you. Goodbye.",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The actual next step is recorded in the workspace. Goodbye.",
+          "at": "2026-10-04T17:58:20.867Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "55db8bd4-881e-4a3b-aa18-05cacecf4a94",
+          "customerId": "C004",
+          "sessionId": "6f66a304-84a6-4eca-a8b2-0c5bdb19a605",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "review",
+          "at": "2026-10-04T17:58:20.867Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "b78eaa90-125c-4bc6-ad38-0134f068889b",
+          "customerId": "C004",
+          "sessionId": "6f66a304-84a6-4eca-a8b2-0c5bdb19a605",
+          "type": "review_requested",
+          "title": "Merchant review requested",
+          "detail": "mandate revoked",
+          "at": "2026-10-04T17:58:20.867Z",
+          "mode": "rehearsal",
+          "data": {
+            "reason": "mandate_revoked"
+          }
+        },
+        {
+          "id": "791ce88a-f6e7-4863-bf0d-c20a2592f884",
+          "customerId": "C004",
+          "sessionId": "6f66a304-84a6-4eca-a8b2-0c5bdb19a605",
+          "type": "consent_recorded",
+          "title": "Permission granted",
+          "detail": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.867Z",
+          "mode": "rehearsal",
+          "data": {
+            "granted": true
+          }
+        },
+        {
+          "id": "64d188ff-4bf9-4f61-80ef-1a243912b5da",
+          "customerId": "C004",
+          "sessionId": "6f66a304-84a6-4eca-a8b2-0c5bdb19a605",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.867Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C005",
+      "scenario": "callback",
+      "expected": "callback",
+      "actual": "callback",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "customer",
+          "text": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The gateway reported payment declined for your ₹1,499 monthly invoice. Would a simulated one-off payment link help, or would you prefer a callback or a person to review it?",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "customer",
+          "text": "Can someone call me tomorrow at this time?",
+          "at": "2026-10-04T17:58:20.867Z"
+        },
+        {
+          "role": "agent",
+          "text": "Callback request recorded for merchant follow-up. No automatic call is scheduled.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "That’s all, thank you. Goodbye.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The actual next step is recorded in the workspace. Goodbye.",
+          "at": "2026-10-04T17:58:20.868Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "4238ff09-cd66-4d86-bcbd-039af4c4f903",
+          "customerId": "C005",
+          "sessionId": "b97c8f4d-3ab7-49b1-8cd4-e126b37bb930",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "callback",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "b7925980-1c60-4069-9e62-031c9035d073",
+          "customerId": "C005",
+          "sessionId": "b97c8f4d-3ab7-49b1-8cd4-e126b37bb930",
+          "type": "callback_requested",
+          "title": "Callback requested",
+          "detail": "Requested for 5/10/2026, 11:28:20 pm IST.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {
+            "callbackAt": "2026-10-05T17:58:20.867Z"
+          }
+        },
+        {
+          "id": "6a3614f0-c2e8-47c5-a720-b5a93bf47d26",
+          "customerId": "C005",
+          "sessionId": "b97c8f4d-3ab7-49b1-8cd4-e126b37bb930",
+          "type": "consent_recorded",
+          "title": "Permission granted",
+          "detail": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.867Z",
+          "mode": "rehearsal",
+          "data": {
+            "granted": true
+          }
+        },
+        {
+          "id": "ef853e70-552e-402c-b562-d7481dbffea0",
+          "customerId": "C005",
+          "sessionId": "b97c8f4d-3ab7-49b1-8cd4-e126b37bb930",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.867Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C006",
+      "scenario": "already_paid",
+      "expected": "review",
+      "actual": "review",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The gateway reported payment declined for your ₹3,999 monthly invoice. Would a simulated one-off payment link help, or would you prefer a callback or a person to review it?",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "I already paid this invoice.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Merchant review task created. Automated recovery is paused. No live transfer or cancellation has occurred.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "That’s all, thank you. Goodbye.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The actual next step is recorded in the workspace. Goodbye.",
+          "at": "2026-10-04T17:58:20.868Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "9ccedbe2-1793-46e6-8ffa-a2815567085e",
+          "customerId": "C006",
+          "sessionId": "4dc4dde9-03f3-4467-9451-ffd82985cb70",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "review",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "22ed70ff-f243-4680-8512-9c6e33341e98",
+          "customerId": "C006",
+          "sessionId": "4dc4dde9-03f3-4467-9451-ffd82985cb70",
+          "type": "review_requested",
+          "title": "Merchant review requested",
+          "detail": "already paid",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {
+            "reason": "already_paid"
+          }
+        },
+        {
+          "id": "d5a1719b-d472-456e-86a5-6042bfa68988",
+          "customerId": "C006",
+          "sessionId": "4dc4dde9-03f3-4467-9451-ffd82985cb70",
+          "type": "consent_recorded",
+          "title": "Permission granted",
+          "detail": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {
+            "granted": true
+          }
+        },
+        {
+          "id": "9398d879-a503-4597-aec6-8b539f261203",
+          "customerId": "C006",
+          "sessionId": "4dc4dde9-03f3-4467-9451-ffd82985cb70",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C007",
+      "scenario": "opt_out",
+      "expected": "opted_out",
+      "actual": "opted_out",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "Please stop calling and remove me.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Opt-out persisted. No further contact or recovery actions are allowed. Say goodbye and end the call.",
+          "at": "2026-10-04T17:58:20.868Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "2c5be29f-3ad7-45bc-8913-caaf40aa5570",
+          "customerId": "C007",
+          "sessionId": "9fd81d8f-04dc-4d4e-aedb-492e1797e900",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "Opted out",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "4dc76db8-cc6c-4502-ad72-b7ec32a6afe0",
+          "customerId": "C007",
+          "sessionId": "9fd81d8f-04dc-4d4e-aedb-492e1797e900",
+          "type": "opt_out_recorded",
+          "title": "Contact disabled",
+          "detail": "Please stop calling and remove me.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "8e07dbbe-dbea-4f73-83e1-2945c9225a35",
+          "customerId": "C007",
+          "sessionId": "9fd81d8f-04dc-4d4e-aedb-492e1797e900",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C008",
+      "scenario": "dispute",
+      "expected": "review",
+      "actual": "review",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The gateway reported payment declined for your ₹2,499 monthly invoice. Would a simulated one-off payment link help, or would you prefer a callback or a person to review it?",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "This bill is wrong. I want a person to review it.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Merchant review task created. Automated recovery is paused. No live transfer or cancellation has occurred.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "That’s all, thank you. Goodbye.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The actual next step is recorded in the workspace. Goodbye.",
+          "at": "2026-10-04T17:58:20.868Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "3a772bb5-3c5d-4110-895e-453c79772430",
+          "customerId": "C008",
+          "sessionId": "bf34c41b-47d7-4e79-82cf-d42cb14d6480",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "review",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "c7aa360b-5e2f-4741-86cd-57ef6bb4cb2e",
+          "customerId": "C008",
+          "sessionId": "bf34c41b-47d7-4e79-82cf-d42cb14d6480",
+          "type": "review_requested",
+          "title": "Merchant review requested",
+          "detail": "billing dispute",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {
+            "reason": "billing_dispute"
+          }
+        },
+        {
+          "id": "1b64c92e-676b-494f-ada2-21c49c4c5a07",
+          "customerId": "C008",
+          "sessionId": "bf34c41b-47d7-4e79-82cf-d42cb14d6480",
+          "type": "consent_recorded",
+          "title": "Permission granted",
+          "detail": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {
+            "granted": true
+          }
+        },
+        {
+          "id": "5179036e-6bd1-4def-9d14-12d9526c5e4f",
+          "customerId": "C008",
+          "sessionId": "bf34c41b-47d7-4e79-82cf-d42cb14d6480",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C009",
+      "scenario": "cancel",
+      "expected": "review",
+      "actual": "review",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "customer",
+          "text": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.868Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The gateway reported payment declined for your ₹1,999 monthly invoice. Would a simulated one-off payment link help, or would you prefer a callback or a person to review it?",
+          "at": "2026-10-04T17:58:20.869Z"
+        },
+        {
+          "role": "customer",
+          "text": "Please cancel my subscription.",
+          "at": "2026-10-04T17:58:20.869Z"
+        },
+        {
+          "role": "agent",
+          "text": "Merchant review task created. Automated recovery is paused. No live transfer or cancellation has occurred.",
+          "at": "2026-10-04T17:58:20.869Z"
+        },
+        {
+          "role": "customer",
+          "text": "That’s all, thank you. Goodbye.",
+          "at": "2026-10-04T17:58:20.869Z"
+        },
+        {
+          "role": "agent",
+          "text": "Thank you. The actual next step is recorded in the workspace. Goodbye.",
+          "at": "2026-10-04T17:58:20.869Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "f72d1edb-f8dd-4439-977c-32d5e7c560d5",
+          "customerId": "C009",
+          "sessionId": "c2db45de-b348-45ed-9fae-d9b3cb1a767a",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "review",
+          "at": "2026-10-04T17:58:20.869Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "80577e45-e1bc-4ef4-971a-abc22ffd65b2",
+          "customerId": "C009",
+          "sessionId": "c2db45de-b348-45ed-9fae-d9b3cb1a767a",
+          "type": "review_requested",
+          "title": "Merchant review requested",
+          "detail": "cancellation",
+          "at": "2026-10-04T17:58:20.869Z",
+          "mode": "rehearsal",
+          "data": {
+            "reason": "cancellation"
+          }
+        },
+        {
+          "id": "f60fe810-edbc-49af-a5b9-1a8ecab4ad15",
+          "customerId": "C009",
+          "sessionId": "c2db45de-b348-45ed-9fae-d9b3cb1a767a",
+          "type": "consent_recorded",
+          "title": "Permission granted",
+          "detail": "Yes, this is a good time.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {
+            "granted": true
+          }
+        },
+        {
+          "id": "3b188cc7-c8c3-4a83-b911-735d46b2435e",
+          "customerId": "C009",
+          "sessionId": "c2db45de-b348-45ed-9fae-d9b3cb1a767a",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.868Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    },
+    {
+      "customerId": "C010",
+      "scenario": "no_answer",
+      "expected": "unreachable",
+      "actual": "unreachable",
+      "passed": true,
+      "transcript": [
+        {
+          "role": "agent",
+          "text": "Hi, I’m Mira, Northstar Fitness’s AI assistant. This is a fictional payment demo. Is now a good time to discuss it?",
+          "at": "2026-10-04T17:58:20.869Z"
+        },
+        {
+          "role": "customer",
+          "text": "(No answer)",
+          "at": "2026-10-04T17:58:20.869Z"
+        },
+        {
+          "role": "agent",
+          "text": "No answer recorded. No consent assumed and no automatic redial.",
+          "at": "2026-10-04T17:58:20.869Z"
+        }
+      ],
+      "events": [
+        {
+          "id": "087a3685-0e08-4056-86a1-a7d8c1aa303c",
+          "customerId": "C010",
+          "sessionId": "f8d6d9c1-da32-4e89-a48d-0fc7ef0fc7f7",
+          "type": "conversation_ended",
+          "title": "Rehearsal complete",
+          "detail": "No answer",
+          "at": "2026-10-04T17:58:20.869Z",
+          "mode": "rehearsal",
+          "data": {}
+        },
+        {
+          "id": "2cccf90f-2403-4064-ba79-fbb3cbeccb1f",
+          "customerId": "C010",
+          "sessionId": "f8d6d9c1-da32-4e89-a48d-0fc7ef0fc7f7",
+          "type": "conversation_started",
+          "title": "Rehearsal started",
+          "detail": "Scripted conversation · no provider spend.",
+          "at": "2026-10-04T17:58:20.869Z",
+          "mode": "rehearsal",
+          "data": {}
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "reprise-labs",
+  "version": "1.0.0",
+  "description": "A side project exploring thoughtful voice agents and payment recovery workflows.",
+  "scripts": {
+    "dev": "tsx watch server/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "start": "NODE_ENV=production tsx server/index.ts",
+    "test": "tsx --test tests/*.test.ts",
+    "eval": "tsx scripts/evaluate.ts",
+    "test:e2e": "playwright test",
+    "agent:export": "tsx scripts/export-agent.ts",
+    "provider:check": "tsx scripts/provider-check.ts",
+    "setup": "tsx scripts/setup.ts",
+    "agent:provision": "tsx scripts/provision-agent.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "demo:record": "tsx scripts/record-demo.ts",
+    "evidence:live": "tsx scripts/capture-live-evidence.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mssharatchandra/reprise-labs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mssharatchandra/reprise-labs/issues"
+  },
+  "homepage": "https://github.com/mssharatchandra/reprise-labs#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "lucide-react": "^1.52.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22.13"
+  }
+}
