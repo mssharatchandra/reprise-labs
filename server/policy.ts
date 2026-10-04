@@ -207,7 +207,7 @@ export function performAction(store: Store, sessionId: string, raw: unknown): Ac
       customer.recoveryStatus = 'link_sent';
       receipt.link = link;
       receipt.message =
-        'Simulated link is available in the merchant workspace. No SMS was sent. Invoice is still outstanding; autopay is unchanged.';
+        'I would send the payment link to you on WhatsApp, SMS, and email so you can pay from the channel you prefer. For this demo, delivery is simulated; no message was actually sent. Invoice remains outstanding and autopay is unchanged.';
     } else if (input.name === 'schedule_callback') {
       const at = Date.parse(input.callbackAt),
         delay = at - Date.now();

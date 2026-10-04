@@ -1,10 +1,12 @@
 # Reprise Labs
 
-**A second chance, without the pressure.**
+**A missed payment. A considered next step.**
 
 A side project exploring voice agents, failed subscription payments, and the boundary between a helpful conversation and an authorized action. Reprise gives a merchant a recovery workspace, a Bolna voice agent named Mira, ten fictional customer records, and a small set of server-enforced tools.
 
-![Reprise recovery workspace](docs/screenshots/workspace.png)
+![Reprise landing page](docs/screenshots/landing.png)
+
+![Reprise recovery desk](docs/screenshots/workspace.png)
 
 Try the full workflow without credentials or paid voice credits. Rehearsals exercise the same recovery policies as live calls; their conversations are explicitly scripted. Live mode makes a real phone call to one privately configured, permitted test number. All payments are simulated.
 
@@ -20,7 +22,7 @@ npm run setup
 npm run dev
 ```
 
-Open **http://localhost:4173**. Choose Aanya → Start rehearsal → grant permission → create a payment link → open simulated checkout → confirm payment. The workspace records recovery only after checkout confirmation. Try Nisha for opt-out, Arjun for claimed prior payment, Dev for a dispute, and Rohan for a revoked mandate.
+Open **http://localhost:4173** for the landing page, then **http://localhost:4173/demo** for a credential-free, isolated reviewer desk. Choose Aanya → Start rehearsal → grant permission → create a payment link → open simulated checkout → confirm payment. The workspace records recovery only after checkout confirmation. Try Nisha for opt-out, Arjun for claimed prior payment, Dev for a dispute, and Rohan for a revoked mandate.
 
 For the production bundle:
 
@@ -29,7 +31,7 @@ npm run build
 npm start
 ```
 
-Local state persists in `.local/reprise.db`. For a clean, independent workspace set `DATABASE_PATH=.local/another-demo.db` before starting. Do not reset a ledger used for live calls: it also holds their spend reservations and exclusion state.
+The private operator workspace is at **http://localhost:4173/workspace**. Its state persists in `.local/reprise.db`. Each public demo browser gets a separate in-memory ledger and an HttpOnly session cookie, expiring after two hours. Demo mode has no paid-call or provider-control routes. For a clean, independent workspace set `DATABASE_PATH=.local/another-demo.db` before starting. Do not reset a ledger used for live calls: it also holds their spend reservations and exclusion state.
 
 ## Real voice setup
 
@@ -37,15 +39,15 @@ Local state persists in `.local/reprise.db`. For a clean, independent workspace 
 2. Build and start the production server with `npm run build` then `npm start`. Start a public HTTPS tunnel, for example `cloudflared tunnel --url http://localhost:4173`. Set `APP_BASE_URL` to the returned HTTPS URL in `.env.local`. Development file/HMR middleware is local-only; public UI requires the production server.
 3. Run `npm run agent:provision` once. This creates a dedicated agent and writes its ID to the private environment. It does not modify other agents or place a call. Restart the app to load the changed environment.
 4. Run `npm run provider:check`, or click **Verify agent configuration** in Live voice setup. Reprise checks the six authenticated tool destinations, the LLM model, and the 90-second duration cap.
-5. Choose a fictional customer, click **Call my test number**, and confirm ownership/permission. Answer the real phone, grant conversational permission, and request a simulated link or callback. The configured destination is never shown in the browser and cannot be supplied through the call API.
+5. Choose a fictional customer, click **Call the test number**, and confirm ownership/permission. Answer the real phone, grant conversational permission, and request a simulated link or callback. The configured destination is never shown in the browser and cannot be supplied through the call API.
 
-If a tunnel changes, the agent URLs must change too. Generate a private reviewable configuration with `npm run agent:export -- --private`, apply it to the dedicated agent through the provider, restart, and verify again. The private export stays in `.local/`; **never upload it**. The shareable [template](artifacts/bolna-agent.template.json) contains placeholders only.
+If a tunnel changes, the agent URLs must change too. Generate a private reviewable configuration with `npm run agent:export -- --private`, apply it with `npm run agent:update`, restart, and verify again. The private export stays in `.local/`; **never upload it**. The shareable [template](artifacts/bolna-agent.template.json) contains placeholders only.
 
 Bolna supplies the LLM, transcription, speech synthesis and outbound telephony. The current configuration uses GPT-4.1 mini, Deepgram Nova 3 and ElevenLabs Angelica. Provider availability, verified-destination restrictions, routing and billing depend on your account. A free rehearsal does not validate those services.
 
 **Budget:** default $2 application allowance, with a conservative $0.50 reservation for every live attempt and a 90-second call cap. Reservations are retained even if acceptance is unknown or the number is busy. No automatic redial. This caps attempts through this workspace; it is **not a provider-enforced dollar limit**. Provider-native cost is recorded without assuming its currency. Verify your account’s actual pricing independently.
 
-The public tunnel shows a locked operator workspace. Use the private `OPERATOR_TOKEN` locally to unlock it if needed. Provider tools require a separate bearer secret **and** a capability bound to a single live conversation. Checkout pages expose fictional invoices only and move no real money.
+The public `/demo` desk needs **no username, password, or API key**. The separate public `/workspace` route is a locked operator workspace. Use the private `OPERATOR_TOKEN` locally to unlock it if needed. Provider tools require a separate bearer secret **and** a capability bound to a single live conversation. Checkout pages expose fictional invoices only and move no real money.
 
 ## What is included
 
@@ -63,16 +65,20 @@ The public tunnel shows a locked operator workspace. Use the private `OPERATOR_T
 ## Verify
 
 ```sh
-npm test                         # 28 policy / API / provider boundary tests
+npm test                         # 29 policy / API / provider / reviewer-boundary tests
 npm run eval                     # ten scripted scenarios, zero provider calls
 npx playwright install chromium  # once, for browser tests
-npm run test:e2e                  # four browser workflows; independent DB, live calling disabled
+npm run test:e2e                  # five browser workflows, including reviewer isolation
 npm run build                    # strict TypeScript check + production build
 ```
 
 The [evaluation artifact](artifacts/evaluation.json) contains reproducible synthetic transcripts and events. It measures deterministic policy behavior, **not LLM quality**. See [verification](docs/verification.md) for observed transport results and evidence boundaries; see [architecture](docs/architecture.md), [tools](docs/tools.md), [demo guide](docs/demo.md), and [dlogs notes](docs/dlogs.md) for the design and experiment.
 
-An actual permitted **77-second answered call** exercised consent → simulated link → final provider transcript. Its link was then settled through browser checkout. The [live evidence](artifacts/live-evidence.json) omits private data; the [short product walkthrough](artifacts/product-walkthrough.webm) separately records the scripted browser experience.
+An actual permitted **77-second answered call** exercised consent → simulated link → final provider transcript. Its link was then settled through browser checkout. The [original call audio](artifacts/live-call.mp3), [live dashboard recording](artifacts/live-dashboard.webm), and [live evidence](artifacts/live-evidence.json) capture that demonstration. The [product walkthrough](artifacts/product-walkthrough.webm) separately records a scripted reviewer experience. The original audio predates the new channel-delivery copy and was not edited to imply otherwise.
+
+The current agent offers proposed delivery through **WhatsApp, SMS, and email**, then explicitly says delivery is simulated. No actual messages are sent.
+
+The landing page, desk, and checkout follow [LOOK.md](LOOK.md): warm paper surfaces, Fraunces names, readable labels, tabular amounts, and copper sentence-style actions. See [reviewer access and proof files](docs/reviewer-access.md) for what to share.
 
 ## Boundaries and next steps
 

@@ -7,6 +7,8 @@ import { config } from './env.ts';
 import { settings, verifyProvider, startLiveCall, syncExecution } from './bolna.ts';
 import { performAction, completePayment } from './policy.ts';
 import { startRehearsal, rehearse, endSession } from './rehearsal.ts';
+import { demoRouter } from './demo.ts';
+import { existsSync, readFileSync } from 'node:fs';
 
 function secretMatches(value: string, expected: string) {
   const a = Buffer.from(value),
@@ -71,6 +73,28 @@ export function createApp(store: Store) {
     });
   };
   app.get('/healthz', (_req, res) => res.json({ ok: true, service: 'reprise-labs' }));
+  app.use('/api/demo', demoRouter());
+  app.get('/api/proof', (_req, res) =>
+    res.json({
+      recordingAvailable: existsSync(resolve('artifacts/live-call.mp3')),
+      voice: JSON.parse(readFileSync(resolve('artifacts/live-evidence.json'), 'utf8')),
+    }),
+  );
+  app.get('/proof/call-audio', (_req, res) => {
+    const file = resolve('artifacts/live-call.mp3');
+    if (!existsSync(file)) return res.status(404).send('Recording unavailable.');
+    res.type('audio/mpeg').sendFile(file);
+  });
+  app.get('/proof/walkthrough', (_req, res) => {
+    const file = resolve('artifacts/product-walkthrough.webm');
+    if (!existsSync(file)) return res.status(404).send('Walkthrough unavailable.');
+    res.type('video/webm').sendFile(file);
+  });
+  app.get('/proof/dashboard', (_req, res) => {
+    const file = resolve('artifacts/live-dashboard.webm');
+    if (!existsSync(file)) return res.status(404).send('Dashboard recording unavailable.');
+    res.type('video/webm').sendFile(file);
+  });
   app.get('/api/dashboard', operator, (_req, res) => {
     const customers = store.allCustomers(),
       sessions = store.allSessions();
@@ -158,7 +182,8 @@ export function createApp(store: Store) {
           ? {
               checkout_url: `${config.baseUrl}/checkout/${link.token}`,
               payment_state: 'outstanding',
-              delivery: 'workspace_only',
+              delivery: 'simulated',
+              proposed_channels: ['whatsapp', 'sms', 'email'],
             }
           : {}),
       });

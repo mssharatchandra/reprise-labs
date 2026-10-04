@@ -16,7 +16,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "demo:record": "tsx scripts/record-demo.ts",
-    "evidence:live": "tsx scripts/capture-live-evidence.ts"
+    "evidence:live": "tsx scripts/capture-live-evidence.ts",
+    "agent:update": "tsx scripts/update-agent.ts",
+    "evidence:audio": "tsx scripts/download-call.ts"
   },
   "repository": {
     "type": "git",

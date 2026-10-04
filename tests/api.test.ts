@@ -91,6 +91,8 @@ test('HTTP boundary authenticates operators and scopes provider tools to live ca
     await request('/api/provider/tools/create_payment_link', { session_token: capability }, auth)
   ).json();
   assert(response.checkout_url);
+  assert.equal(response.delivery, 'simulated');
+  assert.deepEqual(response.proposed_channels, ['whatsapp', 'sms', 'email']);
   assert.equal(store.customer('C002').paymentStatus, 'outstanding');
   assert.equal(
     (
